@@ -138,7 +138,7 @@ def file_is_apk(filename):
 
 
 def analyse(filename, sha256):
-    is_malware = predict(filename, alg='rf', models='../malware-test/models', features='../malware-test/low_gen/features.p').values()[0] == 1
+    is_malware = predict(filename, alg='rf', models='../malware_test/models', features='../malware_test/low_gen/features.p').values()[0] == 1
     return is_malware
 
 
