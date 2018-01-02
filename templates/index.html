@@ -1,0 +1,39 @@
+{% extends "layout.html" %}
+{% block body %}
+  <section class="section is-medium">
+    <div class="container">
+      <h1 class="title">
+        Overview
+      </h1>
+      <p class="subtitle">
+      <strong><a href="https://github.com/33onethird">33 one third</a></strong> is a project by students at the WU Vienna which allows you to analyse <a href="https://en.wikipedia.org/wiki/Android_application_package">Android APKs</a> files and check if they are malware or not. Please use the following form to upload an APK file:
+      </p>
+    </div>
+  </section>
+  <section class="section">
+    <div class="container">
+      <h2 class="title">
+        Upload APK File
+      </h2>
+      <div class="control">
+      <form method=post enctype=multipart/form-data>
+        <!-- <input type=file name=file>  -->
+        <div class="file">
+          <label class="file-label">
+            <input class="file-input" type="file" name="file">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fa fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Choose a file…
+              </span>
+            </span>
+          </label>&nbsp;&nbsp;
+          <input type=submit class="button is-primary" value="Submit"/>
+        </div>
+      </form>
+    </div>
+
+{% endblock %}
+
