@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block body %}
+  <section class="section is-medium">
+    <div class="container">
+      <h1 class="title">
+        Analysis result
+      </h1>
+      <p class="subtitle">
+      {% if malware %}
+      Suspected Malware!
+      {% else %}
+      (Probably) not malware
+      {% endif %}
+      </p>
+      <a href="https://www.virustotal.com/#/search/{{ sha256 }}">Check Virustotal</a>.<p/>
+    </div>
+  </section>
+{% endblock %}
+
