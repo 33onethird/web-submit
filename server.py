@@ -32,7 +32,7 @@ from datetime import datetime
 from malware_test.predict import predict
 
 " global vars "
-UPLOAD_FOLDER = '/tmp/uploads'
+UPLOAD_BASE_FOLDER = '/tmp/uploads'
 ALLOWED_EXTENSIONS = set(['apk'])
 BASEPATH="/api/v1"
 # BASEPATH="/"
@@ -45,7 +45,7 @@ conn = None
 app = Flask(__name__)
 app.secret_key = 'XXXX insert your long random string XXX'
 app.config['MAX_CONTENT_LENGTH'] = 64 * 1024 * 1024
-app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.config['UPLOAD_FOLDER'] = UPLOAD_BASE_FOLDER
 
 
 """ helper functions for DB interaction """
@@ -138,7 +138,7 @@ def file_is_apk(filename):
 
 
 def analyse(filename, sha256):
-    prediction = predict(UPLOAD_FOLDER, alg='rf', models='../malware_test/models', features='../malware_test/low_gen/features.p')
+    prediction = predict(app.config['UPLOAD_FOLDER'], alg='rf', models='../malware_test/models', features='../malware_test/low_gen/features.p')
     print(prediction)
     is_malware = prediction[os.path.basename(filename)] == 1
     return is_malware
@@ -169,12 +169,14 @@ def submit():
         f = request.files['file']
         now=datetime.utcnow().strftime('%Y%m%d_%H:%M:%S')
         pid=os.getpid()
+        subfolder=os.path.join(app.config['UPLOAD_FOLDER'], "{}-{}/".format(now, pid))
         if f.filename == '':
             flash('Error: No file uploaded or selected')
             return redirect(request.url)
         filename='{}-{}-{}'.format(now, pid, werkzeug.secure_filename(f.filename))
-        fullpath=os.path.join(app.config['UPLOAD_FOLDER'], filename)
+        fullpath=os.path.join(subfolder, filename)
         if f and allowed_file(f.filename):
+            os.mkdir(subfolder)
             f.save(fullpath)
             if debug:
                 print("saved file: {}".format(fullpath))
