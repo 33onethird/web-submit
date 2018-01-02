@@ -3,3 +3,5 @@
 	url = git@github.com:33onethird/malware-test.git
 [submodule "Submod"]
 	url = https://github.com/33onethird/malware-test
+[submodule "amalware_test"]
+	url = https://github.com/33onethird/malware-test
