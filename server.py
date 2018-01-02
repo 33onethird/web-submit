@@ -29,10 +29,7 @@ import os
 import hashlib
 import sqlite3
 from datetime import datetime
-
-
-# XXX FIXME: add the right import statement
-# from ../code/malware-test/predict import predict
+from malware_test.predict import predict
 
 " global vars "
 UPLOAD_FOLDER = '/tmp/uploads'

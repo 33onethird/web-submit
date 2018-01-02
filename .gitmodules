@@ -1,0 +1,3 @@
+[submodule "malware_test"]
+	path = malware_test
+	url = git@github.com:33onethird/malware-test.git
