@@ -84,7 +84,8 @@ def insert_into_db(filename, hash, is_malware):
     conn = get_db()
     c = conn.cursor()
     now = datetime.utcnow().strftime('%Y%m%d_%H:%M:%S')
-    c.execute("INSERT INTO hashes (sha256, filename, ip, ts, malware) values (?,?,?,?,?);", (hash, filename, request.remote_addr, now, 0 if is_malware else 1))
+    mw = 1 if is_malware else 0
+    c.execute("INSERT INTO hashes (sha256, filename, ip, ts, malware) values (?,?,?,?,?);", (hash, filename, request.remote_addr, now, mw))
     conn.commit()
 
 
