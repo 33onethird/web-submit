@@ -2,7 +2,7 @@
 Simple flask based web server for submitting APK files and getting them analysed. 
 This flask app uses a small sqlite3 DB to cache already analysed results.
 
-Author: [aaron kaplan](github.com/aaronkaplan)
+Author: [aaron kaplan](https://github.com/aaronkaplan)
 
 
 # How to run this program?
