@@ -84,7 +84,8 @@ def insert_into_db(filename, hash, is_malware):
     conn = get_db()
     c = conn.cursor()
     now = datetime.utcnow().strftime('%Y%m%d_%H:%M:%S')
-    c.execute("INSERT INTO hashes (sha256, filename, ip, ts, malware) values (?,?,?,?,?);", (hash, filename, request.remote_addr, now, 0 if is_malware else 1))
+    mw = 1 if is_malware else 0
+    c.execute("INSERT INTO hashes (sha256, filename, ip, ts, malware) values (?,?,?,?,?);", (hash, filename, request.remote_addr, now, mw))
     conn.commit()
 
 
@@ -139,6 +140,7 @@ def file_is_apk(filename):
 
 def analyse(filename, sha256):
     prediction = predict(os.path.dirname(filename), alg='rf', models='../malware_test/models', features='../malware_test/low_gen/features.p')
+    print("filename = {}".format(filename))
     print(prediction)
     is_malware = prediction[os.path.basename(filename)] == 1
     return is_malware
@@ -147,10 +149,6 @@ def analyse(filename, sha256):
 @app.route('/help')
 def help():
     return render_template('index.html')
-    # return '''possible API endpoints: <p/>
-    #     /api/v1/submit..... this is a HTTP POST method. Please submit the APK file to be analysed <br/>
-    #     /help <br/>
-    # '''
 
 
 @app.route('/')
@@ -219,12 +217,6 @@ def submit():
             return redirect(request.url)
     else:
         return render_template('index.html')
-
-
-def upload():
-    # get API key from headers and validate
-    # check_api_key()
-    pass
 
 
 if __name__ == '__main__':
