@@ -1,22 +1,21 @@
 {% extends "layout.html" %}
 {% block body %}
-  <section class="section is-medium">
-    <div class="container">
-      <h1 class="title">
-        Overview
-      </h1>
+    <section class="is-medium">
+    <div class="container is-large">
       <p class="subtitle">
-      <strong><a href="https://github.com/33onethird">33 one third</a></strong> is a project by students at the WU Vienna which allows you to analyse <a href="https://en.wikipedia.org/wiki/Android_application_package">Android APKs</a> files and check if they are malware or not. Please use the following form to upload an APK file:
-      </p>
+      <strong><a href="https://github.com/33onethird">33 &#8531;</a></strong> is a project by students at the WU Vienna which allows you to analyse <a href="https://en.wikipedia.org/wiki/Android_application_package">Android APKs</a> files and check if they are malware or not.
+	What can you do on this site?
+	<ul>
+		<li><strong>Step 1:</strong> upload an APK. Make sure it's a valid file
+		<li><strong>Step 2:</strong> if we already analysed this file, you will get a cached result. You can manually re-trigger an analysis if needed.
+		<li><strong>Step 3:</strong> the result of the classification will appear. A link to <a href="https://virustotal.com">virustotal</a> is provided for comparison purposes.
+	</ul>
+	Should you find bugs, please create an issue on <a href="https://github.com/33onethird/web-submit">github</a>. Thanks!
+      </p><p>&nbsp;</p>
     </div>
-  </section>
-  <section class="section">
-    <div class="container">
-      <h2 class="title">
-        Upload APK File
-      </h2>
+    <div class="container is-large">
       <div class="control">
-      <form method=post enctype=multipart/form-data>
+      	<form method=post enctype=multipart/form-data>
         <!-- <input type=file name=file>  -->
         <div class="file">
           <label class="file-label">
@@ -25,15 +24,17 @@
               <span class="file-icon">
                 <i class="fa fa-upload"></i>
               </span>
-              <span class="file-label" id="file-name">
+              <span class="file-label">
                 Choose a file…
               </span>
             </span>
           </label>&nbsp;&nbsp;
           <input type=submit class="button is-primary" value="Submit"/>
         </div>
-      </form>
+        </form>
+      </div>
     </div>
-
+    </section>
 {% endblock %}
+
 

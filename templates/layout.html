@@ -16,29 +16,40 @@
     </script>
 </head>
 <body>
+  <section class="navbar" role="navigation" aria-label="main navigation">
+	<div class="navbar-brand">
+		<a class="navbar-item" href="https://bulma.io">
+			<!-- <img src="https://bulma.io/images/bulma-logo.png" alt="Bulma: a modern CSS framework based on Flexbox" width="112" height="28"> -->
+		</a>
+	</div>
+  </section>
+  <section>
+  <div class="container">
+	<h1 class="title is-spaced">
+		Malware detection in Android APKs through machine learning
+	</h1>
 {% with messages = get_flashed_messages() %}
   {% if messages %}
   <section class="section">
-      <div class="container">
-          <div class="notification is-warning">
-            <ul class=flashes>
+        <div class="notification is-info">
+		<button class="delete"></button>
+		<ul class=flashes>
             {% for message in messages %}
-              <li>{{ message }}</li>
+			<li>{{ message }}</li>
             {% endfor %}
-            </ul>
-          </div>
-      </div>
-  </div>
+		</ul>
+	</div>
+  </section>
   {% endif %}
 {% endwith %}
 {% block body %}{% endblock %}
-<footer class="footer is-small">
-  <div class="container">
-    <div class="content has-text-left">
+  <div class="container is-size-3">
+  <hr/>
+    <div class="content has-text-left is-small">
       <p>
         <strong>33 &#8531;</strong> project. <a href="https://github.com/33onethird">Source code</a>.
       </p>
     </div>
   </div>
-</footer>
+  </section>
 </body>
