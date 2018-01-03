@@ -31,25 +31,27 @@
 {% with messages = get_flashed_messages() %}
   {% if messages %}
   <section class="section">
-        <div class="notification is-info">
-		<button class="delete"></button>
-		<ul class=flashes>
+      <div class="container">
+          <div class="notification is-warning">
+            <ul class=flashes>
             {% for message in messages %}
-			<li>{{ message }}</li>
+              <li>{{ message }}</li>
             {% endfor %}
-		</ul>
-	</div>
+            </ul>
+          </div>
+      </div>
   </section>
+  </div>
   {% endif %}
 {% endwith %}
 {% block body %}{% endblock %}
-  <div class="container is-size-3">
-  <hr/>
-    <div class="content has-text-left is-small">
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-left">
       <p>
         <strong>33 &#8531;</strong> project. <a href="https://github.com/33onethird">Source code</a>.
       </p>
     </div>
   </div>
-  </section>
+</footer></section>
 </body>
