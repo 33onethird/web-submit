@@ -35,6 +35,14 @@
       </div>
     </div>
     </section>
+    <script>
+        var file = document.getElementsByName('file')[0];
+        file.onchange = function() {
+            if (file.files.length > 0) {
+              document.getElementById('file-name').innerHTML = file.files[0].name;
+            }
+        };
+    </script>
 {% endblock %}
 
 
