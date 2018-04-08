@@ -174,7 +174,7 @@ def submit():
         filename='{}-{}-{}'.format(now, pid, werkzeug.secure_filename(f.filename))
         fullpath=os.path.join(subfolder, filename)
         if f and allowed_file(f.filename):
-            os.mkdir(subfolder)
+            os.makedirs(subfolder)
             f.save(fullpath)
             if debug:
                 print("saved file: {}".format(fullpath))
